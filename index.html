@@ -36,7 +36,7 @@
 
     <div id="primarycontent">
         <center>
-            <h0>Integrating Action Knowledge and LLMs for Task Planning and Situation Handling in Open Worlds</h0>
+            <h0>Integrating Action Knowledge and LLMs for Task Planning and Situation Handling </br> in Open Worlds</h0>
         </center>
         <center>
             <p>Yan Ding<sup>1</sup>,&nbsp;Xiaohan Zhang<sup>1</sup>,&nbsp;Saeid Amiri<sup>1</sup>,&nbsp;Nieqing Cao<sup>1</sup>,&nbsp;</br>Hao Yang<sup>2</sup>,&nbsp;Andy Kaminski<sup>2</sup>,&nbsp;Chad Esselink<sup>2</sup>,&nbsp;Shiqi Zhang<sup>1</sup></p>
@@ -44,7 +44,7 @@
                 <p><sup>1</sup>SUNY Binghamton &nbsp;<sup>2</sup>Ford Motor Company</p>
                 <center>
                     <!--                    <p>IEEE RA-L, 2022 </p>-->
-                    <p>[<a href='files/COWP_ICRA2023.pdf'>Paper</a>]&nbsp[<a href="https://github.com/yding25/GPT-Planner">Code</a>]&nbsp[<a href="files/COWP_dataset_6tasks.xlsx">Situation Dataset</a>]
+                    <p>[<a href="https://github.com/yding25/GPT-Planner">Code</a>]&nbsp[<a href="files/COWP_dataset_6tasks.xlsx">Situation Dataset</a>]
                     </p>
 
                     <table border="0" cellspacing="10" cellpadding="0" align="center">
@@ -60,26 +60,26 @@
 
                     <h1 align="center">Abstract</h1>
                     <div style="font-size:30px">
-                        <p align="justify" width="20%">Automated task planning algorithms have been developed to help robots complete complex tasks that require multiple actions. Most of those algorithms have been developed for “closed worlds” assuming complete world knowledge is provided. However, the real world is generally open, and the robots frequently encounter <b>unforeseen situations</b> that can potentially break the planner’s completeness. </p>
+                        <p align="justify" width="20%">Task planning systems have been developed to help robots use human knowledge (about actions) to
+                            complete long-horizon tasks. Most of them have been developed for “closed worlds” while assuming
+                            the robot is provided with complete world knowledge. However, the real world is generally open,
+                            and the robots frequently encounter unforeseen situations that can potentially break the planner’s
+                            completeness. Could we leverage the recent advances on pre-trained Large Language Models (<b>LLMs</b>)
+                            to enable <b>classical planning systems</b> to deal with novel situations? </p>
 
-                        <p align="justify" width="20%">This work introduces a novel algorithm (<b>COWP</b>) for open-world task planning and situation handling that dynamically augments the robot’s action knowledge with task-oriented common sense. In particular, common sense is extracted from Large Language Models based on the current task at hand and robot skills.</p>
-
-                        <p align="justify" width="20%">For systematic evaluations, we collected a dataset that includes <b>561 execution-time situations in a dining domain</b>, where each situation corresponds to a state instance of a robot being potentially unable to complete a task using a solution that normally works. Experimental results show that our approach significantly outperforms competitive baselines from the literature in the success rate of service tasks. Additionally, we have demonstrated COWP using a mobile manipulator.</p>
-                    </div>
-
-                    <br>
-
-                    <!--
-                    <h1 align="center">Contributions</h1>
-                    <div style="font-size:30px">
-                        <p align="justify" width="20%">The main contribution of this work is <b>a novel integration of a pre-trained LLM with a knowledge-based task planner</b>. Inheriting the desirable features from both sides, COWP is well grounded in specific domains while embracing commonsense solutions at large. </p>
-                        <p align="justify" width="20%">
-                            For systematic evaluations, we have created a dataset with <b>561</b> execution-time situations collected from a <b>dining domain</b> using a crowd-sourcing platform, where each situation corresponds to an instance of a robot not being able to perform a plan (that normally works).
+                        <p align="justify" width="20%">This paper introduces a novel framework, called <b>COWP</b>, for open-world task planning and situation
+                            handling. COWP dynamically augments the robot’s action knowledge, including the preconditions
+                            and effects of actions, with task-oriented commonsense knowledge. COWP embraces the openness
+                            from LLMs, and is grounded to specific domains via action knowledge. For systematic evaluations,
+                            we collected a dataset that includes 1,085 execution-time situations. Each situation corresponds to a
+                            state instance wherein a robot is potentially unable to complete a task using a solution that normally
+                            works. Experimental results show that our approach outperforms competitive baselines from the
+                            literature in the success rate of service tasks. Additionally, we have demonstrated COWP using a
+                            mobile manipulator.
                         </p>
                     </div>
 
                     <br>
--->
 
                     <h1 align="center">Framework</h1>
                     <table border="0" cellspacing="10" cellpadding="0" align="center">
@@ -115,7 +115,6 @@
                     </table>
                     <div style="font-size:30px">
                         <p align="justify" width="20%"> Algorithm 1 describes how the components of COWP interact with each other. More details can be found in the paper.</p>
-                        <!--                        Initially, Task Planner generates a satisficing plan based on the goal provided by a human user in Line 2. After that, the actions in the plan are performed sequentially by a robot in the for-loop of Lines 3-20. If the current plan remains feasible, as evaluated by Plan Monitor, the next action will be directly passed to the robot for execution in Line 18; otherwise, an action precondition will be added to Task Planner in Line 6. For example, when Task Planner does not know anything about “dirty cups,” it might wrongly believe that one can use a dirty cup as a container for drinking water. In this situation, Line 6 will add a new statement “The precondition of filling a cup with water is that the cup is not dirty” into the task planner. fter the domain description of Task Planner is updated (adding action preconditions or effects), the planner tries to generate a new plan pln′ in Line 7. If no plan is generated by Task Planner (Line 8), Knowledge Acquirer will be activated for knowledge augmentation with external task-oriented common sense in Line 9. If the extracted common sense includes action effects, such information will be added into the task planner in Line 11. For instance, the robot might learn that a chopping board can be used for holding steak, as an action effect that was unknown before. This process continues until no additional action effects can be generated (in this case, COWP reports “no solution” in Line 14) or a plan is generated. COWP leverages common sense to augment a knowledge-based task planner to address situations towards robust task completion in open worlds. The implementations of Lines 4 and 9 using common sense are non-trivial in practice. Next, we describe how commonsense knowledge is extracted from an LLM (GPT-3 in our case) for those purposes.-->
                     </div>
 
                     <br>
@@ -150,15 +149,15 @@
                     <h1 align="center">Prompt Design</h1>
                     <div style="font-size:30px">
                         <p align="justify" width="20%"> The realization of our plan monitor relies on repeatedly querying GPT-3 for each action using the following prompt.</p>
-                        <p align="justify" width="20%"><b>Template 1</b>: <em>Is it suitable to/that [PERFORM ACTION], if there exists [SITUATION].</em></p>
+                        <p align="justify" width="20%"><b>Prompt 1</b>: <em>Is it suitable for a robot to [Perform-Action], if [Situation]?</em></p>
 
                         <p align="justify" width="20%">The following template is for querying an LLM for acquiring common sense about action effects.</p>
 
-                        <p align="justify" width="20%"><b>Template 2</b>: <em> Is it suitable to/that [PERFORM ACTION] on/in/with/at/over [OBJECT]?</em></p>
+                        <p align="justify" width="20%"><b>Prompt 2</b>: <em> Is it suitable for a robot to [Perform-Action-with-Object]?</em></p>
 
-                        <p align="justify" width="20%"><b>Template 3</b>: <em> There are some objects, such as [OBJ-1, OBJ-2, ..., and OBJ-N]. Which is the most suitable for [CURRENT TASK]?</em></p>
+                        <p align="justify" width="20%"><b>Prompt 3</b>: <em> There are some objects, such as [Object-1], [Object-2], ..., and [Object-N]. Which is the most suitable for [Current-Task], if [Situation]?</em></p>
 
-                        <p align="justify" width="20%">The below figure shows three examples for prompt construction based on our <b>Templates 1-3</b>, respectively. In the figure, the interface, called Playground, is intended for testing GPT-3 online, where a user can text a prompt in the blank, and customize the hyperparameters of GPT-3 (e.g., model). In our case, we use the <b>text-davinci-002</b> model, which is the most capable engine.</p>
+                        <p align="justify" width="20%">The below figure shows three examples for prompt construction based on our <b>Templates 1-3</b>, respectively. In the figure, the interface, called Playground, is intended for testing GPT-3 online, where a user can text a prompt in the blank, and customize the hyperparameters of GPT-3 (e.g., model). In our case, we use the <b>text-davinci-003</b> model, which is the most capable engine.</p>
 
                         <p align="justify" width="20%">The prompt for Plan Monitor (PM) is constructed based on Template 1, where PM evaluates if the current task plan is feasible or not. In the <b>top</b> figure, we can know an action precondition that ``one cannot fill a broken cup with water'' according to the common sense from GPT-3. </p>
 
@@ -176,26 +175,41 @@
 
                     <h1 align="center">Experiment Results</h1>
                     <table border="0" cellspacing="10" cellpadding="0" align="center">
-                        <tbody>
-                            <tr>
-                                <td><img src="./img/fig_result1.png" width="850" height="320">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="./img/fig_result2.png" width="850" height="260">
-                                </td>
-                            </tr>
-                        </tbody>
+                        <td>
+                            <img src="./img/Fig8.jpg" style="width:70%;margin-left:0%;margin-right:15%;">
+                        </td>
+                    </table>
+
+                    <table border="0" cellspacing="10" cellpadding="0" align="center">
+                        <td>
+                            <img src="./img/Fig9.jpg" style="width:70%;margin-left:0%;margin-right:15%;">
+                        </td>
+                    </table>
+
+                    <table border="0" cellspacing="10" cellpadding="0" align="center">
+                        <td>
+                            <img src="./img/Fig10.jpg" style="width:100%;margin-left:0%;margin-right:0%;">
+                        </td>
                     </table>
 
                     <div style="font-size:30px">
                         <p align="justify" width="20%">
-                            <b>Top:</b> Overall performances of COWP (ours) and three baseline methods under six different tasks, where the x-axis represents the task.
-                            Each success rate value is an average of 150 trials. The tasks are ranked based on the performance of COWP, where the very left corresponds to its best performance.
+                            <b>Top:</b> The task completion percentage of COWP (ours) and four baseline methods under 12 different tasks. The x-
+                            axis represents the task name, and the y-axis represents the task completion percentage. The task completion percentage
+                            for each value is an average of 150 trials. The tasks are sorted based on the performance of COWP, where the very left
+                            corresponds to its best performance.
                         </p>
                         <p align="justify" width="20%">
-                            <b>Bottom:</b> Overall performances of COWP (ours) and three baseline methods under different objects, where the x-axis represents the object involved in the situation, the number beside each object is the occurrence of the object in our situation dataset, and the y-axis represents the success rate.
-                            The objects are ranked based on the performance of COWP, where the very left corresponds to its best performance.
+                            <b>Middle:</b> The situation handling percentage of COWP (ours) and three baseline methods under 12 different tasks, where
+                            the x-axis represents the task name, and the y-axis represents the situation handling percentage. Each y value represents a
+                            ratio of the number of handled situations to the total number of situations. The tasks are ranked based on the performance
+                            of COWP, where the very left corresponds to its best performance.
+                        </p>
+                        <p align="justify" width="20%">
+                            <b>Bottom:</b> The situation handling percentages of COWP (ours) and three baseline methods under different objects, where
+                            the x-axis represents the object involved in the sampled situation, the number (X) beside each object is the occurrence of
+                            the object in situations, and the y-axis represents the percentage of situation handling. The objects are ranked based on
+                            the performance of COWP. In this analysis, we only display objects with an occurrence of more than 5.
                         </p>
                     </div>
 
@@ -214,48 +228,48 @@
                             </td>
                         </table>
                     </div>
-                    
+
                     <br>
-                    
+
                     <h1 align="center">Statistics of Situation Dataset</h1>
                     <div style="font-size:30px">
                         <p align="justify" width="20%"> The following two figures show the statistics of situations for six everyday tasks used in our evaluation, where x-axis reflects the occurrence of each distinguishable situations, and y-axis represents each distinguishable situations, respectively. In the top left corner of each subfigure, (X) represents the number of distinguishable situations in each task. In the bottom right corner of each subfigure, Total = X represents the number of situations in each task. According to the two figures, we can see that there are at least 92 situations collected for each of the six tasks used in our evaluation, with 16 to 22 distinguishable situations. </p>
-                        
+
                         <table border="0" cellspacing="10" cellpadding="0" align="center">
                             <td>
                                 <img src="./img/fig_situation123.png" style="width:100%;margin-left:0%;margin-right:0%;">
                             </td>
                         </table>
-<!--                        <p align="justify" width="20%"><b>Top</b>: Details of situations in the task of “setting table”; <b>Middle</b>: Details of situations in the task of “drinking coke”; <b>Bottom</b>: Details of situations in the task of “preparing burger”; x-axis reflects the occurrence of each distinguishable situations, and y-axis represents each distinguishable situations, respectively. (X) in the top left corner of each subfigure represents the number of distinguishable situations in each task. Total = X indicates the number of situations in each task.</p>-->
-                        
+                        <!--                        <p align="justify" width="20%"><b>Top</b>: Details of situations in the task of “setting table”; <b>Middle</b>: Details of situations in the task of “drinking coke”; <b>Bottom</b>: Details of situations in the task of “preparing burger”; x-axis reflects the occurrence of each distinguishable situations, and y-axis represents each distinguishable situations, respectively. (X) in the top left corner of each subfigure represents the number of distinguishable situations in each task. Total = X indicates the number of situations in each task.</p>-->
+
                         <table border="0" cellspacing="10" cellpadding="0" align="center">
                             <td>
                                 <img src="./img/fig_situation456.png" style="width:100%;margin-left:0%;margin-right:0%;">
                             </td>
                         </table>
-<!--                        <p align="justify" width="20%"><b>Top</b>: Details of situations in the task of “drinking water”; <b>Middle</b>: Details of situations in the task of “cleaning floor”; <b>Bottom</b>: Details of situations in the task of “washing plate”; x-axis reflects the occurrence of each distinguishable situations, and y-axis represents each distinguishable situations, respectively. (X) in the top left corner of each subfigure represents the number of distinguishable situations in each task. Total = X indicates the number of situations in each task.</p>-->
+                        <!--                        <p align="justify" width="20%"><b>Top</b>: Details of situations in the task of “drinking water”; <b>Middle</b>: Details of situations in the task of “cleaning floor”; <b>Bottom</b>: Details of situations in the task of “washing plate”; x-axis reflects the occurrence of each distinguishable situations, and y-axis represents each distinguishable situations, respectively. (X) in the top left corner of each subfigure represents the number of distinguishable situations in each task. Total = X indicates the number of situations in each task.</p>-->
                     </div>
-                    
+
                     <br>
-                    
+
                     <h1 align="center">Object Library for Simulation</h1>
                     <div style="font-size:30px">
                         <p align="justify" width="20%"> For simulating dining tasks, we extracted 86 objects (e.g., cup, burger, folk, table, and chair) from an existing dataset [2]. Fig. 4 shows these objects, which is categorized into five groups: utensil, appliance, furniture, food, and beverage. From the figure, we can see that the category “utensil” contains the greatest number of objects (i.e., 29), while the category “beverage” contains the fewest ones (i.e., 8). </p>
-                        
+
                         <table border="0" cellspacing="10" cellpadding="0" align="center">
                             <td>
                                 <img src="./img/fig_object.png" style="width:100%;margin-left:0%;margin-right:0%;">
                             </td>
                         </table>
-<!--                        <p align="justify" width="20%">For simulating dining tasks, we extracted 86 objects from an existing dataset. These objects are categorized into five groups: utensil, appliance, furniture, food, and beverage, with (X) representing the number of objects in each group.</p>-->
+                        <!--                        <p align="justify" width="20%">For simulating dining tasks, we extracted 86 objects from an existing dataset. These objects are categorized into five groups: utensil, appliance, furniture, food, and beverage, with (X) representing the number of objects in each group.</p>-->
                     </div>
-                    
+
                     <h1 align="center">Reference</h1>
                     <div style="font-size:30px">
                         <p align="justify" width="20%">[1] C. Aeronautiques, A. Howe, C. Knoblock, I. D. McDermott, A. Ram, M. Veloso, D. Weld, D. W.SRI, A. Barrett, D. Christianson et al., “Pddl— the planning domain definition language,” Technical Report, Tech. Rep., 1998</p>
-                        
+
                         <p align="justify" width="20%">[2] W. Huang, P. Abbeel, D. Pathak, and I. Mordatch, “Language models as zero-shot planners: Extracting actionable knowledge for embodied agents,” Thirty-ninth International Conference on Machine Learning, 2022</p>
-                            </div>
+                    </div>
                     <!-- <center>
                         <h1>Acknowledgements</h1>
                     </center> -->
