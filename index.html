@@ -330,7 +330,7 @@
 		:effect (and (cup_is_placed ?c) (not (cup_is_held ?c)))
 	)
 
-	(:action turnoff_faucet
+	(:action switchoff_faucet
 		:parameters (?r - robot ?f - faucet ?l - location)
 		:precondition (and (faucet_is_on ?f) (faucet_at ?f ?l) (robot_at ?r ?l))
 		:effect (and (faucet_is_off ?f) (not (faucet_is_on ?f)))
@@ -397,7 +397,7 @@
 		:effect (and (table_is_clean ?t))
 	)
 
-	(:action turnoff_vacuum
+	(:action switchoff_vacuum
 		:parameters (?r - robot ?v - vacuum ?l - location)
 		:precondition (and (vacuum_is_on ?v))
 		:effect (and (vacuum_is_off ?v) (not (vacuum_is_on ?v)))
