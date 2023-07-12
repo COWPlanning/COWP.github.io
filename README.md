@@ -1,1 +1,1 @@
-# Homepage for Paper titled "Robot Task Planning and Situation Handling in Open Worlds"
+# Homepage for Paper titled "Integrating Action Knowledge and LLMs for Task Planning and Situation Handling in Open Worlds"
