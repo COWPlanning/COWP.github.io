@@ -126,7 +126,7 @@
                             <div class="publication-links">
                                 <!-- TODO PDF Link. -->
                                 <span class="link-block">
-                                    <a target="_blank" href="https://www.youtube.com/watch?v=pHSxx9AqwC4" class="external-link button is-normal is-rounded is-dark">
+                                   <a target="_blank" href="https://www.youtube.com/watch?v=pHSxx9AqwC4" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-video"></i>
                                         </span>
@@ -185,7 +185,7 @@
             <div class="container">
                 <div class="item item-sweep_without_exceeding" style="display: flex; justify-content: center; align-items: center;">
                     <video poster="" id="sweep_without_exceeding" autoplay controls muted loop style="width:70%;" playbackRate=2.0>
-                        <source src="assets/videos/demos/COWP_demo.mp4" type="video/mp4">
+                        <source src="videos/demos/COWP_demo.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -339,7 +339,11 @@
 		:effect (and (cup_is_placed ?c) (not (cup_is_held ?c)))
 	)
 
+<<<<<<< HEAD
+	(:action turnoff_faucet
+=======
 	(:action switchoff_faucet
+>>>>>>> 8630604cb68e410544ac8ccdd0553f71cfbb40e1
 		:parameters (?r - robot ?f - faucet ?l - location)
 		:precondition (and (faucet_is_on ?f) (faucet_at ?f ?l) (robot_at ?r ?l))
 		:effect (and (faucet_is_off ?f) (not (faucet_is_on ?f)))
@@ -406,7 +410,11 @@
 		:effect (and (table_is_clean ?t))
 	)
 
+<<<<<<< HEAD
+	(:action turnoff_vacuum
+=======
 	(:action switchoff_vacuum
+>>>>>>> 8630604cb68e410544ac8ccdd0553f71cfbb40e1
 		:parameters (?r - robot ?v - vacuum ?l - location)
 		:precondition (and (vacuum_is_on ?v))
 		:effect (and (vacuum_is_off ?v) (not (vacuum_is_on ?v)))
@@ -728,7 +736,11 @@
                     <div class="row is-full-width">
                         <h2 class="title is-3"><span class="dvima">Situation Dataset</span></h2>
                         <span style="font-size: 110%">
+<<<<<<< HEAD
+                            The dataset is provided as a CSV file comprising 12 separate sheets, each representing situations for a distinct task. The name of the task corresponds to the sheet name. Each sheet consists of five columns. 
+=======
                             Users can download both the MTurk questionnaire and the situation dataset at the top of the website. The dataset is provided as a CSV file comprising 12 separate sheets, each representing situations for a distinct task. The name of the task corresponds to the sheet name. Each sheet consists of five columns. 
+>>>>>>> 8630604cb68e410544ac8ccdd0553f71cfbb40e1
                             <br>
                             <br>
                             The situations’ descriptions provided by the MTurkers are in Column A. Column B details the corresponding steps where the described situation occurs. Column C is the index of distinguishable situations, while Column D provides descriptions of these situations. Finally, Column E indicates the number of distinguishable situations.
