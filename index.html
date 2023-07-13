@@ -757,13 +757,14 @@
                 <!-- Inserted Tabs Start -->
                 <br>
                 <span style="font-size: 110%">
-                    Below shows the prompt of baselines in the evaluation, where [] is a placeholder.
+                    Below shows the prompts and hyperparameters of baselines in the evaluation, where [] is a placeholder.
                 </span>
                 <br>
                 <div class="tabs">
                     <ul>
                         <li class="is-active"><a href="#prompt_progprompt">Prompt for ProgPrompt</a></li>
                         <li><a href="#prompt_innermonologue">Prompt for Inner Monologue</a></li>
+                        <li><a href="#hyperparameters_LMZSP">Hyperparameters used in LMZSP</a></li>
                     </ul>
                 </div>
 
@@ -956,6 +957,29 @@ Robot:
                     </div>
                 </div>
 
+                <div class="tab-content">
+                    <div class="tab-pane" id="hyperparameters_LMZSP">
+                        <pre><code>
+planning_lm_id = 'text-davinci-003'
+translation_lm_id = 'stsb-roberta-large'
+MAX_STEPS = 12  # maximum number of steps to be generated
+CUTOFF_THRESHOLD = 0.5  # early stopping threshold based on matching score and likelihood score
+P = 0.5  # hyperparameter for early stopping heuristic to detect whether Planning LM believes the plan is finished
+BETA = 0.3  # weighting coefficient used to rank generated samples
+sampling_params =
+              {   "max_tokens": 256,
+                  "temperature": 0.9,
+                  "top_p": 0.9,
+                  "n": 10,
+                  "logprobs": 1,
+                  "presence_penalty": 0.5,
+                  "frequency_penalty": 0.3,
+                  "stop": '\n'
+              }
+                        </code></pre>
+                    </div>
+                </div>
+                        
             </div>
         </div>
     </section>
